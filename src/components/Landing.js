@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function Album() {
+export default function Landing({isSignedIn}) {
   const classes = useStyles();
 
   return (
@@ -72,11 +72,19 @@ export default function Album() {
       <div className={classes.heroButtons}>
         <Grid container spacing={2} justify="center">
           <Grid item>
-            <Link to="/pricing">
-              <Button variant="contained" color="primary">
-                Pricing
-              </Button>
-            </Link>
+            { isSignedIn ?
+              <Link to="/app">
+                <Button variant="contained" color="primary">
+                  App
+                </Button>
+              </Link>
+            :
+              <Link to="/pricing">
+                <Button variant="contained" color="primary">
+                  Pricing
+                </Button>
+              </Link>
+            }
           </Grid>
         </Grid>
       </div>

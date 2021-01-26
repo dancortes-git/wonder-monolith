@@ -56,10 +56,11 @@ const App = () => {
               <Pricing />
             </Route>
             <Route path="/app">
+              {!isSignedIn && <Redirect to="/" />}
               <TodoList />
             </Route>
             <Route path="/">
-              <Landing />
+              <Landing isSignedIn={isSignedIn} />
             </Route>
           </Switch>
         </Box>

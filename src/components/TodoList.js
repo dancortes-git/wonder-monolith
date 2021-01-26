@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Button, Card, CardActions, CardContent, CardMedia, Container, Fab, Grid, TextField, Typography } from '@material-ui/core';
+import { Card, CardActions, CardContent, Container, Fab, Grid, TextField, Typography } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
+import DeleteIcon from '@material-ui/icons/Delete';
 import {v4 as uuid} from 'uuid';
+import CardImage from './CardImage';
 
 const useStyles = makeStyles((theme) => ({
   container: {},
   formContent: {
-    padding: theme.spacing(4),
+    padding: theme.spacing(4,0,4,0),
   },
   formItem: {
     padding: theme.spacing(0, 2, 2, 0),
@@ -23,8 +25,23 @@ const useStyles = makeStyles((theme) => ({
   cardContent: {
     flexGrow: 1,
   },
+  gridCard: {
+    padding: theme.spacing(2)
+  },
+  cardImage: {
+    width: '100%',
+    height: 'auto',
+  },
+  cardButton: {
+    display: "flex",
+    alignItems: "flex-end",
+    justifyContent: "flex-end"
+  },
 }));
 
+function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
 
 export default function TodoList() {
   const [todoList, setTodoList] = useState([]);
@@ -36,11 +53,18 @@ export default function TodoList() {
     todoList.push({
       id: uuid(),
       title,
-      message
+      message,
+      image: `https://picsum.photos/id/${getRndInteger(0,1000)}/300/200`,
     });
     setTodoList(todoList);
     setTitle('');
     setMessage('');
+  }
+
+  const removeTodo = ({id}) => {
+    setTodoList(
+      todoList.filter(todo => todo.id !== id)
+    )
   }
 
   return (
@@ -102,13 +126,12 @@ export default function TodoList() {
       </form>
       <Grid container className={classes.formContent}>
         {todoList.map(todo => (
-          <Grid item key={todo.id} xs={12} sm={6} md={4}>
+          <Grid item key={todo.id} xs={12} sm={6} md={4} className={classes.gridCard}>
             <Card className={classes.card}>
-              <CardMedia
-                className={classes.cardMedia}
-                image="https://source.unsplash.com/random"
-                title="Image title"
-              />
+              <CardImage
+                src={todo.image}
+                alt={todo.title}
+                className={classes.cardImage} />
               <CardContent className={classes.cardContent}>
                 <Typography gutterBottom variant="h5" component="h2">
                   {todo.title}
@@ -117,10 +140,15 @@ export default function TodoList() {
                   {todo.message}
                 </Typography>
               </CardContent>
-              <CardActions>
-                <Button size="small" color="primary">
-                  Delete
-                </Button>
+              <CardActions
+                className={classes.cardButton}>
+                <Fab
+                  size="small"
+                  color="secondary"
+                  aria-label="delete"
+                  onClick={() => removeTodo(todo)}>
+                  <DeleteIcon />
+                </Fab>
               </CardActions>
             </Card>
           </Grid>

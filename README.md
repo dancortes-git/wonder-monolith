@@ -5,12 +5,15 @@ This project is a monolith React SPA, created with create-react-app.
 This is a simple todo task list project, each task created is a card with title, message and an random image from [Lorem Picsum](https://picsum.photos).
 
 For styling I used [Material UI](https://material-ui.com).
-The main purpose of this project is to learn more about Micro Frontends. I used this project to transform it to some Micro Frontends.
+
+The main purpose of this project is to learn more about Micro Frontends.
+
+I used this project to transform it to some Micro Frontends.
 
 The Main Micro Frontends created based on this project is:
-+ [Wonder WFP Container](https://github.com/dancortes-git/wonder-mfp-container).
++ [Wonder WFP Container](https://github.com/dancortes-git/wonder-mfp-container):
   + Container application using [Module Federation Plugin](https://webpack.js.org/concepts/module-federation).
-+ [Wonder SSPA Container](https://github.com/dancortes-git/wonder-sspa-container).
++ [Wonder SSPA Container](https://github.com/dancortes-git/wonder-sspa-container):
   + Container application using [Single SPA](https://single-spa.js.org).
 
 This project was deployed in a S3 bucket exposed by cloudfront using github actions (CI/CD).

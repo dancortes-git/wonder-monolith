@@ -1,4 +1,45 @@
-# Getting Started with Create React App
+# Wonder
+
+This project is a monolith React SPA, created with create-react-app.
+
+This is a simple todo task list project, each task created is a card with title, message and an random image from [Lorem Picsum](https://picsum.photos).
+
+For styling I used [Material UI](https://material-ui.com).
+The main purpose of this project is to learn more about Micro Frontends. I used this project to transform it to some Micro Frontends.
+
+The Main Micro Frontends created based on this project is:
++ [Wonder WFP Container](https://github.com/dancortes-git/wonder-mfp-container).
+  + Container application using [Module Federation Plugin](https://webpack.js.org/concepts/module-federation).
++ [Wonder SSPA Container](https://github.com/dancortes-git/wonder-sspa-container).
+  + Container application using [Single SPA](https://single-spa.js.org).
+
+This project was deployed in a S3 bucket exposed by cloudfront using github actions (CI/CD).
+
+You can see a live demo at: https://wonder-monolith.dancortes.com
+
+## Project Wireframes
+
++ Home
+
+  ![Wonder Home](wireframes/wonder-home.jpg)
+
++ Pricing
+
+  ![Wonder Pricing](wireframes/wonder-pricing.jpg)
+
++ SignIn
+
+  ![Wonder SignIn](wireframes/wonder-signin.jpg)
+
++ SignUp
+
+  ![Wonder SignUp](wireframes/wonder-signup.jpg)
+
++ Product App
+
+  ![Wonder Product App](wireframes/wonder-app.jpg)
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

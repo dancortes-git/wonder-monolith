@@ -1,9 +1,11 @@
-name: deploy-container
+name: deploy-monolith
 
 on:
   push:
     branches:
       - master
+    paths-ignore:
+      - 'README.md'
 
 jobs:
   build:

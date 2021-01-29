@@ -1,4 +1,4 @@
-# Wonder
+# Wonder Monolith
 
 This project is a monolith React SPA, created with create-react-app.
 
